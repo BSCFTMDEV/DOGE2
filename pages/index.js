@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable no-dupe-keys */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable eqeqeq */

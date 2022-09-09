@@ -1,9 +1,7 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable array-callback-return */
-/* eslint-disable no-tabs */
-/* eslint-disable no-mixed-spaces-and-tabs */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
-
+/* eslint-disable @next/next/no-img-element */
 import { Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useEffect, useState } from 'react'
@@ -11,42 +9,14 @@ import React, { useEffect, useState } from 'react'
 import 'sf-font'
 import axios from 'axios'
 import VAULTABI from './VAULTABI.json'
-import { NFTCONTRACT, STAKINGCONTRACT, moralisapi, nftpng } from './config'
-import Web3Modal from 'web3modal'
-import WalletConnectProvider from '@walletconnect/web3-provider'
-import WalletLink from 'walletlink'
+import { NFTCONTRACT, STAKINGCONTRACT, moralisapi, nftpng } from '../components/config'
 import Web3 from 'web3'
-import { NftFilters } from '@alch/alchemy-web3'
 
 let web3 = null
 let account = null
 let vaultcontract = null
 
 const moralisapikey = 'zglKCYyqp658UwQbzpIjUjspQJznpktmDX6P0HqjblHsNQS71wrveTF90RYgFNk0'
-const providerOptions = {
-
-  binancechainwallet: {
-    package: true
-
-	  },
-	  walletconnect: {
-    package: WalletConnectProvider,
-    options: {
-		  infuraId: '3cf2d8833a2143b795b7796087fff369'
-    }
-  },
-  walletlink: {
-    package: WalletLink,
-    options: {
-		  appName: 'Net2Dev NFT Minter',
-		  infuraId: '3cf2d8833a2143b795b7796087fff369',
-		  rpc: '',
-		  chainId: 4,
-		  appLogoUrl: null,
-		  darkMode: true
-    }
-	  }
-}
 
 export default function Nft () {
   const [apicall, getNfts] = useState([])
@@ -58,7 +28,8 @@ export default function Nft () {
   }, [])
 
   async function callApi () {
-    const provider = await Web3Modal.connect()
+    // eslint-disable-next-line no-undef
+    const provider = await web3Modal.connect()
     web3 = new Web3(provider)
     await provider.send('eth_requestAccounts')
     const accounts = await web3.eth.getAccounts()

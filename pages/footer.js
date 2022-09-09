@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-html-link-for-pages */
+/* eslint-disable @next/next/no-img-element */
 import 'sf-font'
 import { Text, Row, Spacer, Container, Col } from '@nextui-org/react'
 
