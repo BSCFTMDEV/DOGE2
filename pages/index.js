@@ -1,85 +1,91 @@
-import { ethers } from 'ethers';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import Web3Modal from "web3modal";
-import { useRouter } from 'next/router';
+/* eslint-disable no-dupe-keys */
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable eqeqeq */
+/* eslint-disable no-var */
+/* eslint-disable react/jsx-key */
+import { ethers } from 'ethers'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import Web3Modal from 'web3modal'
+import { useRouter } from 'next/router'
 import NFTCollection from '../engine/NFTCollection.json'
-import Resell from '../engine/Resell.json';
-import { Grid, Card, Text, Button, Row, Spacer, Container } from '@nextui-org/react';
-import { hhresell, hhnftcol, mainnet } from '../engine/configuration';
-import { cipherHH, simpleCrypto } from '../engine/configuration';
-import confetti from 'canvas-confetti';
-import 'sf-font';
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import Resell from '../engine/Resell.json'
+import { Grid, Card, Text, Button, Row, Spacer, Container } from '@nextui-org/react'
+import { hhresell, hhnftcol, mainnet, cipherHH, simpleCrypto } from '../engine/configuration'
 
+import confetti from 'canvas-confetti'
+import 'sf-font'
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 
-
-export default function Home() {
+export default function Home () {
   const [hhlist, hhResellNfts] = useState([])
   useEffect(() => {
     loadHardHatResell()
   }, [hhResellNfts])
 
   const handleConfetti = () => {
-    confetti();
-  };
+    confetti()
+  }
   const router = useRouter()
 
-  async function loadHardHatResell() {
+  async function loadHardHatResell () {
     const provider = new ethers.providers.JsonRpcProvider(mainnet)
     const key = simpleCrypto.decrypt(cipherHH)
-    const wallet = new ethers.Wallet(key, provider);
-    const contract = new ethers.Contract(hhnftcol, NFTCollection, wallet);
-    const market = new ethers.Contract(hhresell, Resell, wallet);
-    const itemArray = [];
+    const wallet = new ethers.Wallet(key, provider)
+    const contract = new ethers.Contract(hhnftcol, NFTCollection, wallet)
+    const market = new ethers.Contract(hhresell, Resell, wallet)
+    const itemArray = []
     contract.totalSupply().then(result => {
       for (let i = 0; i < result; i++) {
-        var token = i + 1         
+        var token = i + 1
         var owner = contract.ownerOf(token)
-        var getOwner = Promise.resolve(owner)
+        const getOwner = Promise.resolve(owner)
         getOwner.then(address => {
-        if (address == hhresell) {
-        const rawUri = contract.tokenURI(token)
-        const Uri = Promise.resolve(rawUri)
-        const getUri = Uri.then(value => {
-          let str = value
-          let cleanUri = str.replace('ipfs://', 'https://ipfs.io/ipfs/')
-          console.log(cleanUri)
-          let metadata = axios.get(cleanUri).catch(function (error) {
-            console.log(error.toJSON());
-          });
-          return metadata;
+          if (address == hhresell) {
+            const rawUri = contract.tokenURI(token)
+            const Uri = Promise.resolve(rawUri)
+            const getUri = Uri.then(value => {
+              const str = value
+              const cleanUri = str.replace('ipfs://', 'https://ipfs.io/ipfs/')
+              console.log(cleanUri)
+              const metadata = axios.get(cleanUri).catch(function (error) {
+                console.log(error.toJSON())
+              })
+              return metadata
+            })
+            getUri.then(value => {
+              const rawImg = value.data.image
+              const name = value.data.name
+              const desc = value.data.description
+              const image = rawImg.replace('ipfs://', 'https://ipfs.io/ipfs/')
+              const price = market.getPrice(token)
+              Promise.resolve(price).then(_hex => {
+                const salePrice = Number(_hex)
+                const txPrice = salePrice.toString()
+                Promise.resolve(owner).then(value => {
+                  const ownerW = value
+                  const outPrice = ethers.utils.formatUnits(salePrice.toString(), 'ether')
+                  const meta = {
+                    name,
+                    img: image,
+                    cost: txPrice,
+                    val: outPrice,
+                    tokenId: token,
+                    wallet: ownerW,
+                    desc
+                  }
+                  console.log(meta)
+                  itemArray.push(meta)
+                })
+              })
+            })
+          }
         })
-        getUri.then(value => {
-          let rawImg = value.data.image
-          var name = value.data.name
-          var desc = value.data.description
-          let image = rawImg.replace('ipfs://', 'https://ipfs.io/ipfs/')
-          const price = market.getPrice(token)
-          Promise.resolve(price).then(_hex => {
-          var salePrice = Number(_hex);
-          var txPrice = salePrice.toString()
-          Promise.resolve(owner).then(value => {
-            let ownerW = value;
-            let outPrice = ethers.utils.formatUnits(salePrice.toString(), 'ether')
-            let meta = {
-              name: name,
-              img: image,
-              cost: txPrice,
-              val: outPrice,
-              tokenId: token,
-              wallet: ownerW,
-              desc
-            }
-            console.log(meta)
-            itemArray.push(meta)
-          })
-        })
-      })
-    }})
-    }})
-    await new Promise(r => setTimeout(r, 3000));
+      }
+    })
+    // eslint-disable-next-line promise/param-names
+    await new Promise(r => setTimeout(r, 3000))
     hhResellNfts(itemArray)
   }
 
@@ -87,7 +93,7 @@ export default function Home() {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 1,
-      slidesToSlide: 1 
+      slidesToSlide: 1
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -97,16 +103,16 @@ export default function Home() {
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 1,
-      slidesToSlide: 1 
+      slidesToSlide: 1
     }
-  };
+  }
 
   return (
     <div>
       <div>
         <Container xl style={{ backgroundImage: 'linear-gradient(to top, #020202, #050505, #080808, #0b0b0b, #0e0e0e, #16141a, #1e1724, #291a2d, #451a3a, #64133c, #820334, #9b0022)' }}>
-          <Container xs css={{marginBottom:'$3'}}>
-          <Text css={{ marginLeft: '$40', justifyContent:'' }} style={{color:"#fff",fontSmooth:"always",textShadow:"-0px 0px 3px #ffffff",fontFamily:"SF Pro Display",fontWeight:"700"}} h2>DOGEBOX MARKET OPEN SOON</Text>
+          <Container xs css={{ marginBottom: '$3' }}>
+          <Text css={{ marginLeft: '$40', justifyContent: '' }} style={{ color: '#fff', fontSmooth: 'always', textShadow: '-0px 0px 3px #ffffff', fontFamily: 'SF Pro Display', fontWeight: '700' }} h2>DOGEBOX MARKET OPEN SOON</Text>
           <Carousel swipeable={false}
             draggable={false}
             showDots={true}
@@ -119,13 +125,13 @@ export default function Home() {
             customTransition="all .5"
             transitionDuration={800}
             containerClass="carousel-container"
-            removeArrowOnDeviceType={["tablet", "mobile"]}
+            removeArrowOnDeviceType={['tablet', 'mobile']}
             dotListClass="custom-dot-list-style"
             itemClass="carousel-item-padding-60-px">
             {
               hhlist.map((nft, i) => (
                   <div>
-                    <Card.Image css={{marginLeft:'$15', maxWidth:'450px'}} src={nft.img} key={i} />
+                    <Card.Image css={{ marginLeft: '$15', maxWidth: '450px' }} src={nft.img} key={i} />
                   </div>
               ))
             }
@@ -135,22 +141,22 @@ export default function Home() {
       </div>
       <Container sm>
         <Row css={{ marginTop: '$3', marginBottom: '$3' }}>
-          <Text style={{color:"#fff",fontSmooth:"always",textShadow:"-0px 0px 3px #ffffff",fontFamily:"SF Pro Display",fontWeight:"700"}}h3>Latest NFT's</Text>
+          <Text style={{ color: '#fff', fontSmooth: 'always', textShadow: '-0px 0px 3px #ffffff', fontFamily: 'SF Pro Display', fontWeight: '700' }}h3>Latest NFT's</Text>
         </Row>
         <Grid.Container gap={1} justify="flex-start">
           {
             hhlist.slice(0, 9).map((nft, id) => {
-                async function buylistNft() {
-                  const web3Modal = new Web3Modal()
-                  const connection = await web3Modal.connect()
-                  const provider = new ethers.providers.Web3Provider(connection)
-                  const signer = provider.getSigner()
-                  const contract = new ethers.Contract(hhresell, Resell, signer)
-                  const transaction = await contract.buyNft(nft.tokenId, { value: nft.cost })
-                  await transaction.wait()
-                  router.push('/portal')
-                }
-                return (
+              async function buylistNft () {
+                const web3Modal = new Web3Modal()
+                const connection = await web3Modal.connect()
+                const provider = new ethers.providers.Web3Provider(connection)
+                const signer = provider.getSigner()
+                const contract = new ethers.Contract(hhresell, Resell, signer)
+                const transaction = await contract.buyNft(nft.tokenId, { value: nft.cost })
+                await transaction.wait()
+                router.push('/portal')
+              }
+              return (
                   <Grid xs={3}>
                     <Card style={{ boxShadow: '1px 1px 10px #ffffff' }} variant="bordered" key={id}>
                       <Text style={{
@@ -162,22 +168,22 @@ export default function Home() {
                         marginLeft: '3px'
                       }}>{nft.name} Token-{nft.tokenId}</Text>
                       <Card.Body css={{ p: 0 }}>
-                        <Card.Image 
+                        <Card.Image
                           style={{ maxWidth: '180px', borderRadius: '6%' }}
                           src={nft.img}
                         />
                       </Card.Body>
-                      <Card.Footer css={{ justifyItems: "flex-start" }}>
+                      <Card.Footer css={{ justifyItems: 'flex-start' }}>
                     <Row key={id}wrap="wrap" justify="space-between" align="center">
                       <Text wrap="wrap">{nft.desc}</Text>
-                      <Text  style={{ fontSize: '45px' }}>{nft.val} <img src='n2dr-logo.png' style={{ width: '45px', height: '45px', marginTop: '4.5px' }} /></Text>
+                      <Text style={{ fontSize: '45px' }}>{nft.val} <img src='n2dr-logo.png' style={{ width: '45px', height: '45px', marginTop: '4.5px' }} /></Text>
                       <Button color="gradient" style={{ fontSize: '20px' }} onPress={() => handleConfetti(buylistNft(nft))}>Buy</Button>
                     </Row>
                   </Card.Footer>
                 </Card>
                   </Grid>
-                )
-              })
+              )
+            })
             }
         </Grid.Container>
       </Container>

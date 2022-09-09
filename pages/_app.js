@@ -1,17 +1,14 @@
-import Navbar from "../components/Navbar"
+import Navbar from '../components/Navbar'
 import '../styles/globals.css'
-import { createTheme, NextUIProvider } from "@nextui-org/react";
-import 'sf-font';
-import Link from 'next/link'
-import { Spacer, Button, Col, Row, Container, Dropdown } from '@nextui-org/react';
-import react from "react";
-import Footer from './footer';
+import { createTheme, NextUIProvider } from '@nextui-org/react'
+import 'sf-font'
 
+import Footer from './footer'
 
 const theme = createTheme({
-  type: "dark",
+  type: 'dark',
   theme: {
-    fontFamily:'SF Pro Display',
+    fontFamily: 'SF Pro Display',
     colors: {
       primaryLight: '$blue200',
       primaryLightHover: '$blue300',
@@ -36,11 +33,11 @@ const theme = createTheme({
   }
 })
 
-function MyApp({ Component, pageProps }) {
+function MyApp ({ Component, pageProps }) {
   return (
     <div>
-    <div style={{background:'black'}} >
-    
+    <div style={{ background: 'black' }} >
+
     <>
     <Navbar/>
     <NextUIProvider theme={theme} >
@@ -52,7 +49,7 @@ function MyApp({ Component, pageProps }) {
      </>
      </div>
      </div>
-  ); 
+  )
 }
 
 export default MyApp
