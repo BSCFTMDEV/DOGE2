@@ -1,9 +1,13 @@
-import Navbar from '../components/Navbar'
+/* eslint-disable quotes */
+/* eslint-disable no-unused-vars */
+import Navbar from "../components/Navbar"
 import '../styles/globals.css'
-import { createTheme, NextUIProvider } from '@nextui-org/react'
+import { createTheme, NextUIProvider, Spacer, Button, Col, Row, Container, Dropdown } from "@nextui-org/react"
 import 'sf-font'
-
 import Footer from './footer'
+import Link from 'next/link'
+
+import react from "react"
 
 const theme = createTheme({
   type: 'dark',
