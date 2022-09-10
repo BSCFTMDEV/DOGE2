@@ -1,13 +1,15 @@
-/* eslint-disable quotes */
 /* eslint-disable no-unused-vars */
+/* eslint-disable import/no-duplicates */
+/* eslint-disable semi */
+/* eslint-disable quotes */
 import Navbar from "../components/Navbar"
 import '../styles/globals.css'
-import { createTheme, NextUIProvider, Spacer, Button, Col, Row, Container, Dropdown } from "@nextui-org/react"
-import 'sf-font'
-import Footer from './footer'
+import { createTheme, NextUIProvider } from "@nextui-org/react";
+import 'sf-font';
+import Footer from './footer';
 import Link from 'next/link'
-
-import react from "react"
+import { Spacer, Button, Col, Row, Container, Dropdown } from '@nextui-org/react';
+import react from "react";
 
 const theme = createTheme({
   type: 'dark',
