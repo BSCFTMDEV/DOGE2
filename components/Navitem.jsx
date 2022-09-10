@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import react from 'react'
 
-const NavItem = ({ text, href, active }) => {
+const Navitem = ({ text, href, active }) => {
   return (
     <Link href={href}>
       <a
@@ -16,4 +16,4 @@ const NavItem = ({ text, href, active }) => {
   )
 }
 
-export default NavItem
+export default Navitem
