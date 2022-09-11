@@ -18,7 +18,7 @@ const MENU_LIST = [
   { text: "Mint", href: "/Mint" },
   { text: "Mining", href: "/Mining" },
   { text: "My Nft's", href: "/portal" },
-  { text: "Farms", href: "http://Dogebox.netlify.app" },
+  { text: "Farms", href: "http://Dogebox.dog" },
 ];
 const Navbar = () => {
   const [navActive, setNavActive] = useState(null);
