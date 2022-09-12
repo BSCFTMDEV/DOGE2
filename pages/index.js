@@ -114,7 +114,7 @@ export default function Home () {
       <div>
         <Container xl style={{ backgroundImage: 'linear-gradient(to top, #020202, #050505, #080808, #0b0b0b, #0e0e0e, #16141a, #1e1724, #291a2d, #451a3a, #64133c, #820334, #9b0022)' }}>
           <Container xs css={{ marginBottom: '$3' }}>
-          <Text css={{ marginLeft: '$40', justifyContent: '' }} style={{ color: '#fff', fontSmooth: 'always', textShadow: '-0px 0px 3px #ffffff', fontFamily: 'SF Pro Display', fontWeight: '700' }} h2>DOGEBOX MARKET OPEN SOON</Text>
+          <Text css={{ marginLeft: '$40', justifyContent: '' }} style={{ color: '#fff', fontSmooth: 'always', textShadow: '-0px 0px 3px #ffffff', fontFamily: 'SF Pro Display', fontWeight: '700' }} h2>DOGEBOX MARKETPLACE</Text>
           <Carousel swipeable={false}
             draggable={false}
             showDots={true}

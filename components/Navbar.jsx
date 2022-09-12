@@ -16,7 +16,7 @@ import NavItem from "./Navitem";
 const MENU_LIST = [
   { text: "Market", href: "/" },
   { text: "Mint", href: "/Mint" },
-  { text: "Mining", href: "/Mining" },
+  { text: "Mining", href: "/" },
   { text: "My Nft's", href: "/portal" },
   { text: "Farms", href: "http://Dogebox.dog" },
 ];
