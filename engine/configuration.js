@@ -36,12 +36,16 @@ var mumbai = 'https://matic-mumbai.chainstacklabs.com';
 var goerli = 'https://rpc.ankr.com/eth_goerli';
 var rinkeby = 'https://rpc.ankr.com/eth_rinkeby';
 var bsctest = 'https://rpc02-sg.dogechain.dog';
+var bsctest1 = 'https://rpc03-sg.dogechain.dog';
+var bsctest2 = 'https://rpc-us.dogechain.dog';
+var bsctest4 = 'https://rpc.dogechain.dog';
 var hardhat = 'http://node.a3b.io:8545';
 
 /*
 CHANGE THIS TO YOUR PREFERRED TESTNET
 */
 var hhrpc = bsctest;
+
 /*
 Global Parameters
 */
