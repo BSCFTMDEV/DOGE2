@@ -1,33 +1,17 @@
+/* eslint-disable semi */
 /* eslint-disable n/handle-callback-err */
 /* eslint-disable no-tabs */
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import React from 'react'
-import Button from 'react-bootstrap/Button'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/Home.module.css'
-import Web3 from 'web3'
+import Web3 from 'web3';
+import { ethers } from 'ethers';
 
 const ABI = [
-  {
-    inputs: [
-      {
-        internalType: 'contract IERC20',
-        name: '_paytoken',
-        type: 'address'
-      },
-      {
-        internalType: 'uint256',
-        name: '_costvalue',
-        type: 'uint256'
-      }
-    ],
-    name: 'addCurrency',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function'
-  },
   {
     inputs: [],
     stateMutability: 'nonpayable',
@@ -84,65 +68,6 @@ const ABI = [
     type: 'event'
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'to',
-        type: 'address'
-      },
-      {
-        internalType: 'uint256',
-        name: 'tokenId',
-        type: 'uint256'
-      }
-    ],
-    name: 'approve',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function'
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: '_to',
-        type: 'address'
-      },
-      {
-        internalType: 'uint256',
-        name: '_mintAmount',
-        type: 'uint256'
-      }
-    ],
-    name: 'mint',
-    outputs: [],
-    stateMutability: 'payable',
-    type: 'function'
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: '_to',
-        type: 'address'
-      },
-      {
-        internalType: 'uint256',
-        name: '_mintAmount',
-        type: 'uint256'
-      },
-      {
-        internalType: 'uint256',
-        name: '_pid',
-        type: 'uint256'
-      }
-    ],
-    name: 'mintpid',
-    outputs: [],
-    stateMutability: 'payable',
-    type: 'function'
-  },
-  {
     anonymous: false,
     inputs: [
       {
@@ -160,134 +85,6 @@ const ABI = [
     ],
     name: 'OwnershipTransferred',
     type: 'event'
-  },
-  {
-    inputs: [
-      {
-        internalType: 'bool',
-        name: '_state',
-        type: 'bool'
-      }
-    ],
-    name: 'pause',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function'
-  },
-  {
-    inputs: [],
-    name: 'renounceOwnership',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function'
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'from',
-        type: 'address'
-      },
-      {
-        internalType: 'address',
-        name: 'to',
-        type: 'address'
-      },
-      {
-        internalType: 'uint256',
-        name: 'tokenId',
-        type: 'uint256'
-      }
-    ],
-    name: 'safeTransferFrom',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function'
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'from',
-        type: 'address'
-      },
-      {
-        internalType: 'address',
-        name: 'to',
-        type: 'address'
-      },
-      {
-        internalType: 'uint256',
-        name: 'tokenId',
-        type: 'uint256'
-      },
-      {
-        internalType: 'bytes',
-        name: 'data',
-        type: 'bytes'
-      }
-    ],
-    name: 'safeTransferFrom',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function'
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'operator',
-        type: 'address'
-      },
-      {
-        internalType: 'bool',
-        name: 'approved',
-        type: 'bool'
-      }
-    ],
-    name: 'setApprovalForAll',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function'
-  },
-  {
-    inputs: [
-      {
-        internalType: 'string',
-        name: '_newBaseExtension',
-        type: 'string'
-      }
-    ],
-    name: 'setBaseExtension',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function'
-  },
-  {
-    inputs: [
-      {
-        internalType: 'string',
-        name: '_newBaseURI',
-        type: 'string'
-      }
-    ],
-    name: 'setBaseURI',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function'
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '_newmaxMintAmount',
-        type: 'uint256'
-      }
-    ],
-    name: 'setmaxMintAmount',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function'
   },
   {
     anonymous: false,
@@ -317,62 +114,6 @@ const ABI = [
   {
     inputs: [
       {
-        internalType: 'address',
-        name: 'from',
-        type: 'address'
-      },
-      {
-        internalType: 'address',
-        name: 'to',
-        type: 'address'
-      },
-      {
-        internalType: 'uint256',
-        name: 'tokenId',
-        type: 'uint256'
-      }
-    ],
-    name: 'transferFrom',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function'
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: 'newOwner',
-        type: 'address'
-      }
-    ],
-    name: 'transferOwnership',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function'
-  },
-  {
-    inputs: [],
-    name: 'withdraw',
-    outputs: [],
-    stateMutability: 'payable',
-    type: 'function'
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '_pid',
-        type: 'uint256'
-      }
-    ],
-    name: 'withdrawcustom',
-    outputs: [],
-    stateMutability: 'payable',
-    type: 'function'
-  },
-  {
-    inputs: [
-      {
         internalType: 'uint256',
         name: '',
         type: 'uint256'
@@ -392,6 +133,42 @@ const ABI = [
       }
     ],
     stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'contract IERC20',
+        name: '_paytoken',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: '_costvalue',
+        type: 'uint256'
+      }
+    ],
+    name: 'addCurrency',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: 'tokenId',
+        type: 'uint256'
+      }
+    ],
+    name: 'approve',
+    outputs: [],
+    stateMutability: 'nonpayable',
     type: 'function'
   },
   {
@@ -560,6 +337,47 @@ const ABI = [
     type: 'function'
   },
   {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_to',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: '_mintAmount',
+        type: 'uint256'
+      }
+    ],
+    name: 'mint',
+    outputs: [],
+    stateMutability: 'payable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: '_to',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: '_mintAmount',
+        type: 'uint256'
+      },
+      {
+        internalType: 'uint256',
+        name: '_pid',
+        type: 'uint256'
+      }
+    ],
+    name: 'mintpid',
+    outputs: [],
+    stateMutability: 'payable',
+    type: 'function'
+  },
+  {
     inputs: [],
     name: 'name',
     outputs: [
@@ -605,6 +423,19 @@ const ABI = [
     type: 'function'
   },
   {
+    inputs: [
+      {
+        internalType: 'bool',
+        name: '_state',
+        type: 'bool'
+      }
+    ],
+    name: 'pause',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
     inputs: [],
     name: 'paused',
     outputs: [
@@ -615,6 +446,121 @@ const ABI = [
       }
     ],
     stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'renounceOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'from',
+        type: 'address'
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: 'tokenId',
+        type: 'uint256'
+      }
+    ],
+    name: 'safeTransferFrom',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'from',
+        type: 'address'
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: 'tokenId',
+        type: 'uint256'
+      },
+      {
+        internalType: 'bytes',
+        name: 'data',
+        type: 'bytes'
+      }
+    ],
+    name: 'safeTransferFrom',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'operator',
+        type: 'address'
+      },
+      {
+        internalType: 'bool',
+        name: 'approved',
+        type: 'bool'
+      }
+    ],
+    name: 'setApprovalForAll',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_newBaseExtension',
+        type: 'string'
+      }
+    ],
+    name: 'setBaseExtension',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_newBaseURI',
+        type: 'string'
+      }
+    ],
+    name: 'setBaseURI',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_newmaxMintAmount',
+        type: 'uint256'
+      }
+    ],
+    name: 'setmaxMintAmount',
+    outputs: [],
+    stateMutability: 'nonpayable',
     type: 'function'
   },
   {
@@ -728,6 +674,42 @@ const ABI = [
     inputs: [
       {
         internalType: 'address',
+        name: 'from',
+        type: 'address'
+      },
+      {
+        internalType: 'address',
+        name: 'to',
+        type: 'address'
+      },
+      {
+        internalType: 'uint256',
+        name: 'tokenId',
+        type: 'uint256'
+      }
+    ],
+    name: 'transferFrom',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'newOwner',
+        type: 'address'
+      }
+    ],
+    name: 'transferOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
         name: '_owner',
         type: 'address'
       }
@@ -741,6 +723,26 @@ const ABI = [
       }
     ],
     stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    inputs: [],
+    name: 'withdraw',
+    outputs: [],
+    stateMutability: 'payable',
+    type: 'function'
+  },
+  {
+    inputs: [
+      {
+        internalType: 'uint256',
+        name: '_pid',
+        type: 'uint256'
+      }
+    ],
+    name: 'withdrawcustom',
+    outputs: [],
+    stateMutability: 'payable',
     type: 'function'
   }
 ]
@@ -1162,46 +1164,46 @@ const TOKENABI = [
   }
 ]
 
-let account = null
-let contract = null
-let token = null
+let account = null;
+let contract = null;
+let token = null;
 
-const ADDRESS = '0xF9e12E07Da4b306Eed0Dc34e621927f50FE8AAE2'
-const erc20address = '0x0796D92C2Bf172269382361Fc90a6f8577D22556'
+const ADDRESS = '0x560DdF0FD062C8521FAB163545576337B709CE21';
+const erc20address = '0x0796D92C2Bf172269382361Fc90a6f8577D22556';
 
 async function connectwallet () {
   if (window.ethereum) {
-    const web3 = new Web3(window.ethereum)
-    await window.ethereum.send('eth_requestAccounts')
-    const accounts = await web3.eth.getAccounts()
+    const web3 = new Web3(window.ethereum);
+    await window.ethereum.send('eth_requestAccounts');
+    const accounts = await web3.eth.getAccounts();
 
-    account = accounts[0]
-    document.getElementById('wallet-address').textContent = account
-    contract = new web3.eth.Contract(ABI, ADDRESS)
-	  token = new web3.eth.Contract(TOKENABI, erc20address)
+    account = accounts[0];
+    document.getElementById('wallet-address').textContent = account;
+    contract = new web3.eth.Contract(ABI, ADDRESS);
+	  token = new web3.eth.Contract(TOKENABI, erc20address);
   }
 }
 async function mint () {
   if (window.ethereum) {
-    const _mintAmount = Number(document.querySelector('[name=amount]').value)
-    const mintRate = Number(await contract.methods.cost().call())
-    const totalAmount = mintRate * _mintAmount
+    const _mintAmount = Number(document.querySelector('[name=amount]').value);
+    const mintRate = Number(await contract.methods.cost().call());
+    const totalAmount = mintRate * _mintAmount;
     contract.methods.mint(account, _mintAmount).send({ from: account, value: String(totalAmount) })
   }
 }
 
 async function mint0 () {
-  const _pid = '0'
-  const erc20address = await contract.methods.getCryptotoken(_pid).call()
-  const currency = new web3.eth.Contract(TOKENABI, erc20address)
-  const mintRate = await contract.methods.getNFTCost(_pid).call()
-  const _mintAmount = Number(outvalue)
-  const totalAmount = mintRate * _mintAmount
+  const _pid = '0';
+  const erc20address = await contract.methods.getCryptotoken(_pid).call();
+  const currency = new web3.eth.Contract(TOKENABI, erc20address);
+  const mintRate = await contract.methods.getNFTCost(_pid).call();
+  const _mintAmount = Number(outvalue);
+  const totalAmount = mintRate * _mintAmount;
   await Web3Alc.eth.getMaxPriorityFeePerGas().then((tip) => {
     Web3Alc.eth.getBlock('pending').then((block) => {
-      const baseFee = Number(block.baseFeePerGas)
-      const maxPriority = Number(tip)
-      const maxFee = maxPriority + baseFee
+      const baseFee = Number(block.baseFeePerGas);
+      const maxPriority = Number(tip);
+      const maxFee = maxPriority + baseFee;
       currency.methods.approve(NFTCONTRACT, String(totalAmount))
 					  .send({ from: account })
         .then(currency.methods.transfer(NFTCONTRACT, String(totalAmount))
@@ -1214,26 +1216,26 @@ async function mint0 () {
             console.log('Transfer Submitted, Hash: ', transactionHash)
             let transactionReceipt = null
             while (transactionReceipt == null) {
-              transactionReceipt = await web3.eth.getTransactionReceipt(transactionHash)
+              transactionReceipt = await web3.eth.getTransactionReceipt(transactionHash);
               await sleep(expectedBlockTime)
             }
             window.console = {
               log: function (str) {
-                const out = document.createElement('div')
-                out.appendChild(document.createTextNode(str))
-                document.getElementById('txout').appendChild(out)
+                const out = document.createElement('div');
+                out.appendChild(document.createTextNode(str));
+                document.getElementById('txout').appendChild(out);
               }
             }
-            console.log('Transfer Complete', transactionReceipt)
+            console.log('Transfer Complete', transactionReceipt);
             contract.methods.mintpid(account, _mintAmount, _pid)
               .send({
                 from: account,
                 maxFeePerGas: maxFee,
                 maxPriorityFeePerGas: maxPriority
-              })
-          }))
-    })
-  })
+              });
+          }));
+    });
+  });
 }
 
 function App () {
@@ -1264,4 +1266,4 @@ function App () {
   )
 }
 
-export default App
+export default App;
