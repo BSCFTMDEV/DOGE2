@@ -1243,20 +1243,18 @@ function App () {
         <div className='App'>
             <div className='container'>
                 <div className='row'>
-                    <form className="col-lg-5 mt-5 mx-auto stakegoldeffect " style={{ borderRadius: '25px', boxShadow: '1px 1px 15px ' }}>
-                        <h4>Mint DogeBox Collection</h4>
-                        <h5>First</h5>
-                        <Button onClick={connectwallet} style={{ marginBottom: '5px', color: '#FFFFFF' }}>Connect wallet</Button>
-                        <div className="card" id='wallet-address' style={{ marginTop: '3px', color: '#000000', boxShadow: '1px 1px 10px' }}>
-                            <label className="mx-auto"style={{ color: '#000000' }} htmlFor='floatingInput'>Wallet address</label>
+                    <form className="col-lg-5 mt-5 mx-auto stakegoldeffect" style={{ borderRadius: '15px', padding: '20px', marginBottom: '80px' }}>
+                        <h2>Mint DogeBox Collection</h2>
+                        <Button onClick={connectwallet} style={{ marginBottom: '10px', marginTop: '10px', color: '#FFFFFF' }}>Connect wallet</Button>
+                        <div className="card" id='wallet-address' style={{ marginTop: '3px', color: '#000000' }}>
+                            <label className="mx-auto" style={{ color: '#000000' }} htmlFor='floatingInput'>Wallet address</label>
                             </div>
-                            <div className="card"style={{ marginTop: '3px', boxShadow: '1px 1px 10px ' }}>
-                            <input style={{ color: '#000000' }}type="number" name="amount" defaultValue="1" min="1" max="5"/>
-                            <label className="mx-auto"style={{ color: '#000000' }}>Please select amount Nft Mint</label>
-                            <Button onClick={mint}>Mint </Button>
-
+                            <div className="card" style={{ background: 'none', marginTop: '3px' }}>
+                            <label className="mx-auto mt-4 mb-2" style={{ color: '#fff' }}>Please enter the amount to mint</label>
+                            <input style={{ color: '#000000', width: '50px', margin: 'auto', marginBottom: '20px', textalign: 'center' }} type="number" name="amount" defaultValue="1" min="1" max="5"/>
+                            <Button style={{ width: '300px', margin: 'auto' }} onClick={mint}>Mint </Button>
                             </div>
-                            <label className="mx-auto" style={{ color: '#FFFFFF' }}>Price 500 WDoge</label>
+                            <label className="mx-auto mt-2" style={{ color: '#FFFFFF' }}>Price 500 WDoge</label>
 
                     </form>
 

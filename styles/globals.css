@@ -281,17 +281,17 @@ nav{
 
 @keyframes glow2 {
   from {
-    box-shadow: 0 0 4px -1px #f4dc76;
+    box-shadow: 0 0 4px -2px #f4dc76;
   }
   to {
-    box-shadow: 0 0 10px 7px #ffb300;
+    box-shadow: 0 0 10px 8px #ffb300;
   }
 }
 
 .stakegoldeffect {
     font-family: "SF Pro Display";
     font-weight: 300;
-    animation: glow2 3s infinite alternate;
+    animation: glow2 1s infinite alternate;
     background: linear-gradient(
       to bottom,
       rgb(1, 53, 130),

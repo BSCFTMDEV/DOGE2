@@ -49,9 +49,7 @@ function MyApp ({ Component, pageProps }) {
     <NextUIProvider theme={theme} >
     <Component {...pageProps} />
     </NextUIProvider>
-<Footer>
-  <Footer/>
-</Footer>
+
      </>
      </div>
      </div>
