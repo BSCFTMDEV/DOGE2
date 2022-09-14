@@ -36,7 +36,7 @@ change the value of "hhrpc" below.
 var mumbai = 'https://matic-mumbai.chainstacklabs.com';
 var goerli = 'https://rpc.ankr.com/eth_goerli';
 var rinkeby = 'https://rpc.ankr.com/eth_rinkeby';
-var bsctest = 'https://rpc-sg.dogechain.dog';
+var bsctest = 'https://rpc.dogechain.dog';
 var hardhat = 'http://node.a3b.io:8545';
 
 /*
