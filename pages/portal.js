@@ -1170,7 +1170,7 @@ export default function Sell () {
         })
       }
     })
-    await new Promise(r => setTimeout(r, 3000))
+    await new Promise(r => setTimeout(r, 4000))
     setNfts(itemArray)
     setLoadingState('loaded')
   }
@@ -1180,7 +1180,7 @@ export default function Sell () {
         <Container sm>
       <Row >
         <Col>
-      <Text h3>No NFT's Found, Connect Wallet</Text>
+      <Text h3>No NFT's Found</Text>
       </Col>
       </Row>
       <Spacer></Spacer>
