@@ -29,7 +29,7 @@ const theme = createTheme({
       transparent: '#00000000',
 
       gradient: 'linear-gradient(112deg, $blue100 -25%, $pink500 -10%, $purple300 90%)',
-      link: '#5E1DAD',
+      link: '#f8f6fb',
 
       myColor: '#00000030'
 

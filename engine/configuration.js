@@ -33,11 +33,11 @@ export var hhnftcol = "0x560DdF0FD062C8521FAB163545576337B709CE21";
 NETWORK RPC ADDRESSES, Choose one then 
 change the value of "hhrpc" below.
 */
-var mumbai = 'https://matic-mumbai.chainstacklabs.com';
-var goerli = 'https://rpc.ankr.com/eth_goerli';
-var rinkeby = 'https://rpc.ankr.com/eth_rinkeby';
+// var mumbai = 'https://matic-mumbai.chainstacklabs.com';
+// var goerli = 'https://rpc.ankr.com/eth_goerli';
+// var rinkeby = 'https://rpc.ankr.com/eth_rinkeby';                                                                          
+// var hardhat = 'http://node.a3b.io:8545';
 var bsctest = 'https://rpc.dogechain.dog';
-var hardhat = 'http://node.a3b.io:8545';
 
 /*
 CHANGE THIS TO YOUR PREFERRED TESTNET

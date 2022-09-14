@@ -18,7 +18,7 @@ const MENU_LIST = [
   { text: "Mint", href: "/Mint" },
   { text: "Mining", href: "/" },
   { text: "My Nft's", href: "/portal" },
-  { text: "Farms", href: "http://Dogebox.dog" },
+  { text: "Farms", href: "http://Dogebox.dog" }, 
 ];
 const Navbar = () => {
   const [navActive, setNavActive] = useState(null);
@@ -28,6 +28,7 @@ const Navbar = () => {
     <header>
       <nav className={`nav`}>
         <Link href={"/"}>
+        
           <a>
 
              <img style={{width:'140px'}} src ="Logo.png"/>
