@@ -26,8 +26,8 @@ export const cipherHH = simpleCrypto.encrypt(hhraw)
 /*
 MARKET AND NFT CONTRACTS
 */
-export var hhresell = "0x8b3f8963Df62E6936409D153DFC864c8Ed3e5D0A";
-export var hhnftcol = "0x560DdF0FD062C8521FAB163545576337B709CE21";
+export var hhresell = "0xaCCCAF94871c9d8a955Ae80b36aCCBd120846FDC";
+export var hhnftcol = "0x04a78CF7afe292Fb6f353b48b15B095EDC8aCf8c";
 
 /*
 NETWORK RPC ADDRESSES, Choose one then 
