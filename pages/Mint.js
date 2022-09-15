@@ -1254,7 +1254,7 @@ function App () {
                             <input style={{ color: '#000000', width: '50px', margin: 'auto', marginBottom: '20px', textalign: 'center' }} type="number" name="amount" defaultValue="1" min="1" max="5"/>
                             <Button style={{ width: '300px', margin: 'auto' }} onClick={mint}>Mint </Button>
                             </div>
-                            <label className="mx-auto mt-2" style={{ color: '#FFFFFF' }}>Price 500 WDoge</label>
+                            <label className="mx-auto mt-2" style={{ color: '#FFFFFF' }}>Price 100 WDoge</label>
 
                     </form>
 
