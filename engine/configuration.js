@@ -37,7 +37,7 @@ change the value of "hhrpc" below.
 // var goerli = 'https://rpc.ankr.com/eth_goerli';
 // var rinkeby = 'https://rpc.ankr.com/eth_rinkeby';                                                                          
 // var hardhat = 'http://node.a3b.io:8545';
-var bsctest = 'https://rpc.dogechain.dog';
+var bsctest = 'https://rpc-sg.dogechain.dog';
 
 /*
 CHANGE THIS TO YOUR PREFERRED TESTNET
